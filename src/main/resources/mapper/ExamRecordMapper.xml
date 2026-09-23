@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.exam.mapper.ExamRecordMapper">
+    <select id="customQueryRanking" resultType="com.atguigu.exam.vo.ExamRankingVO">
+        select
+        er.*,
+        pr.`name` paper_name ,
+        pr. total_score paper_total_score,
+        TIMESTAMPDIFF(MINUTE, er.start_time, er.end_time) duration
+        from exam_records er left join paper pr
+        on er.exam_id = pr.id
+        where er.is_deleted = 0 and pr.is_deleted = 0
+        and er.`status` = '已批阅'
+        <if test="ccId != null">
+            and pr.class_course_id=#{ccId}
+        </if>
+        <if test="paperId != null">
+            and pr.id=#{paperId}
+        </if>
+        order by er.score desc , duration asc
+        <if test="limit != null">
+            limit #{limit};
+        </if>
+    </select>
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from exam_records
+        <where>
+
+                and status = '已批阅'
+
+            <if test="begin != null">
+                and create_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and create_time &lt; #{end}
+            </if>
+        </where>
+    </select>
+</mapper>
