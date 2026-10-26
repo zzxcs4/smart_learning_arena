@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.exam.mapper.ClassMapper">
+<mapper namespace="com.zzx.exam.mapper.ClassMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.exam.entity.Class">
+    <resultMap id="BaseResultMap" type="com.zzx.exam.entity.Class">
             <id property="id" column="id" />
             <result property="className" column="class_name" />
             <result property="createTime" column="create_time" />

@@ -1,0 +1,24 @@
+package com.zzx.exam.mapper;
+
+
+import com.zzx.exam.entity.ExamRecord;
+import com.zzx.exam.vo.ExamRankingVO;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @description 针对表【exam_record(考试记录表)】的数据库操作Mapper
+ * @createDate 2025-06-20 22:37:43
+ * @Entity com.atguigu.exam.entity.ExamRecord
+ */
+@Mapper
+public interface ExamRecordMapper extends BaseMapper<ExamRecord> {
+
+        List<ExamRankingVO> customQueryRanking(@Param("ccId")Long ccId, @Param("paperId") Integer paperId, @Param("limit") Integer limit);
+
+    Integer countByMap(Map map);
+} 

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.exam.mapper.ClassStudentRelationMapper">
+<mapper namespace="com.zzx.exam.mapper.ClassStudentRelationMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.exam.entity.ClassStudentRelation">
+    <resultMap id="BaseResultMap" type="com.zzx.exam.entity.ClassStudentRelation">
             <id property="id" column="id" />
             <result property="classId" column="class_id" />
             <result property="studentId" column="student_id" />
