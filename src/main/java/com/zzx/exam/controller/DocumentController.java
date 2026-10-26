@@ -8,7 +8,7 @@ import com.zzx.exam.service.DocumentService;
 import com.zzx.exam.service.FileUploadService;
 import com.zzx.exam.springai.app.TeachingContentApp;
 import com.zzx.exam.utils.PlainTextToMarkdownUtil;
-import com.atguigu.exam.vo.*;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzx.exam.vo.AiGenerateTCRequestVO;
 import com.zzx.exam.vo.ImportRequest;

@@ -3,7 +3,7 @@ package com.zzx.exam.service.impl;
 import com.zzx.exam.entity.Class;
 import com.zzx.exam.entity.ClassCourseRelation;
 import com.zzx.exam.entity.User;
-import com.atguigu.exam.service.*;
+
 import com.zzx.exam.service.*;
 import com.zzx.exam.vo.CourseQueryRequestVO;
 import com.zzx.exam.vo.CourseVO;

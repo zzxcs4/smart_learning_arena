@@ -6,7 +6,7 @@ import com.zzx.exam.entity.ClassCourseRelation;
 import com.zzx.exam.service.ClassCourseRelationService;
 import com.zzx.exam.service.ClassService;
 import com.zzx.exam.utils.InviteCodeGenerator;
-import com.atguigu.exam.vo.*;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzx.exam.vo.ClassAddVO;
 import com.zzx.exam.vo.ClassVO;

@@ -8,7 +8,7 @@ import com.zzx.exam.entity.User;
 import com.zzx.exam.mapper.UserMapper;
 import com.zzx.exam.service.FileUploadService;
 import com.zzx.exam.service.UserService;
-import com.atguigu.exam.vo.*;
+
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -6,7 +6,7 @@ import com.zzx.exam.entity.AnswerRecord;
 import com.zzx.exam.entity.ClassCourseRelation;
 import com.zzx.exam.entity.ExamRecord;
 import com.zzx.exam.entity.Paper;
-import com.atguigu.exam.service.*;
+
 import com.zzx.exam.vo.StudyEffectVO;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
