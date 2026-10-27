@@ -1,0 +1,126 @@
+server:
+  port: 8124
+spring:
+
+  #  # 允许 Bean 定义覆盖
+  #  main:
+  #    allow-bean-definition-overriding: true
+  profiles:
+    active: local
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.vectorstore.redis.autoconfigure.RedisVectorStoreAutoConfiguration
+      - org.springframework.ai.model.ollama.autoconfigure.OllamaEmbeddingAutoConfiguration
+  # 文件上传大小配置
+  servlet:
+    multipart:
+      max-file-size: 10MB  # 单个文件的最大大小（例如 10MB，根据你的需求调整）
+      max-request-size: 50MB  # 单次请求的总大小（多文件上传时总和，需大于 max-file-size）
+      enabled: true  # 启用文件上传支持（默认已启用，可省略）
+
+  ai:
+    dashscope:
+      api-key: ""
+      chat:
+        options:
+          model: qwen3.8-flash
+      embedding:
+        options:
+          model: qwen3.7-text-embedding
+
+    vectorstore:
+      pgvector:
+        index-type: hnsw
+        distance-type: cosine_distance
+        initialize-schema: true
+
+    mcp:
+      client:
+        #        enabled: true
+        #        name: my-mcp-client
+        #        version: 1.0.0
+        #        request-timeout: 120s
+        #        type: SYNC
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8127
+  #        stdio:
+  #          servers-configuration: classpath:mcp-servers.json
+  #          connections:
+  #            server1:
+  #              command: /path/to/server
+  #              args:
+  #                - --port=3000
+  #              env:
+  #                API_KEY: your-api-key
+
+
+  # MySQL 数据源 - 业务数据
+  datasource:
+    dynamic:
+      primary: postgresql #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        mysql:
+          url: jdbc:mysql://  /exam_system_new?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2b8
+          username:
+          password:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        postgresql:
+          url: jdbc:postgresql:// /postgres
+          username:
+          password:
+          driver-class-name: org.postgresql.Driver
+
+
+
+  ##      hikari:
+  ##        maximum-pool-size: 20
+  ##        minimum-idle: 5
+  ##        connection-timeout: 30000
+  #
+  #    # PostgreSQL 数据源 - 向量数据
+  #
+  #    postgresql:
+  #
+  #      url: jdbc:postgresql://192.168.247.101:5432/postgres
+  #      username: postgres
+  #      password: postgres
+  #      driver-class-name: org.postgresql.Driver
+  #      type: com.zaxxer.hikari.HikariDataSource
+  #      hikari:
+  #        maximum-pool-size: 20
+  #        minimum-idle: 5
+  #        connection-timeout: 30000
+  # JPA配置
+  #  jpa:
+  #    hibernate:
+  #      ddl-auto: update
+  #    show-sql: true
+  #    properties:
+  #      hibernate:
+  #        dialect: org.hibernate.dialect.MySQLDialect
+
+
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+logging:
+  level:
+    com:
+      baomidou:
+        dynamic:
+          datasource: DEBUG
+          springdoc: DEBUG
+  default-flat-param-object: true
+#用于打印框架生成的sql语句，便于调试
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted # 全局逻辑删除的实体属性名(配置后可以忽略不配置步骤二)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
